@@ -20,7 +20,7 @@ gem('puma')
 # Use SCSS for stylesheets
 gem('sass-rails')
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem('webpacker')
+# gem('webpacker')
 # Install Rails Framework
 gem('react-rails')
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
