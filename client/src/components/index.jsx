@@ -1,4 +1,3 @@
-import Button from './Button'
-import Container from './Container'
+import LinkButton from './LinkButton';
 
-export {Button, Container}
+export { LinkButton };

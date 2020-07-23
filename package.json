@@ -1,5 +1,5 @@
 {
-  "name": "berardo-joyas",
+  "name": "final-capstone",
   "engines": {
     "node": "12.16.3"
   },
@@ -7,9 +7,6 @@
     "build": "yarn --cwd client install && yarn --cwd client build",
     "deploy": "cp -a client/build/. public/",
     "postinstall": "yarn build && yarn deploy && echo 'Client built!'"
-  },
-  "devDependencies": {
-    "sass-lint": "^1.13.1"
   },
   "license": "MIT"
 }

@@ -1,16 +1,15 @@
-import React, { Component } from 'react'
+import React from 'react';
 
-import { Link } from 'react-router-dom'
+import { LinkButton } from '../components';
 
-import {Button, Container} from '../components'
-
-class NotFound extends Component {
-  render () {
-    return <Container text textAlign='center'>
-      <h1>404: Not found</h1>
-          <Button as={Link} to='/'>Back to home</Button>
-    </Container>
-  }
+function NotFound() {
+  return (
+    <div className="App">
+      <h1>Error: 401</h1>
+      <h2>Page Not Found</h2>
+      <LinkButton to="/">Go Back Home</LinkButton>
+    </div>
+  );
 }
 
-export default NotFound
+export default NotFound;

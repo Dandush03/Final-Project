@@ -1,13 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+
+// Components
+import {Home, NotFound} from './pages';
+
+// Assets
 import './assets/styles/index.scss';
-import App from './pages/App';
+
+// Services
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <BrowserRouter>
+    <Switch>
+      <Route exact path="/" render={() => <Home />} />
+      <Route render={() => <NotFound />} />
+    </Switch>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 

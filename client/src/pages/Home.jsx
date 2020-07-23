@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
 
 // Import Components
-import {Container, Button} from '../components'
+import { LinkButton } from '../components';
 
 // Import Assets
 import logo from '../assets/images/logo.svg';
@@ -15,7 +14,11 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Edit
+          {' '}
+          <code>src/App.js</code>
+          {' '}
+          and save to reload.
         </p>
         <a
           className="App-link"
@@ -26,8 +29,7 @@ function App() {
           Learn React
         </a>
       </header>
-      <Container class="D"></Container>
-      <Button as={Link} to='/'>Back to home</Button>
+      <LinkButton to="/">Back to home</LinkButton>
     </div>
   );
 }
