@@ -1,5 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
+
+// Import Components
+import {Container, Button} from '../components'
+
+// Import Assets
 import logo from '../assets/images/logo.svg';
+
 import '../assets/styles/App.scss';
 
 function App() {
@@ -19,6 +26,8 @@ function App() {
           Learn React
         </a>
       </header>
+      <Container class="D"></Container>
+      <Button as={Link} to='/'>Back to home</Button>
     </div>
   );
 }

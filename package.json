@@ -8,5 +8,8 @@
     "deploy": "cp -a client/build/. public/",
     "postinstall": "yarn build && yarn deploy && echo 'Client built!'"
   },
+  "devDependencies": {
+    "sass-lint": "^1.13.1"
+  },
   "license": "MIT"
 }
