@@ -4,6 +4,7 @@ import { createStructuredSelector } from 'reselect';
 import PropTypes from 'prop-types';
 import { Redirect } from "react-router-dom";
 
+
 // Import Components
 
 // Import Assets
@@ -30,7 +31,7 @@ class Tasks extends Component {
   render() {
     this.login = this.props.login
     if(!this.login) {
-      return <Redirect to="/users/sign_in" />
+      return <Redirect to="/" />
     }
     return (
       <main>
