@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import PropTypes from 'prop-types';
 
-import { getUser, logOutUser } from '../actions/user';
+import getUser from '../actions/user';
 
 import { LinkButton } from '../components';
 
@@ -24,17 +24,15 @@ class Header extends Component {
   }
 
   signOut() {
-    const { props: { logOutUser } } = this;
-    logOutUser();
-    alert()
+    const { props: { location } } = this;
+    window.location.replace(`${location}users/sign_out`);
   }
 
   render() {
     const { props: { user } } = this;
-    const { props: { logOutUser } } = this;
     return (
       <header>
-        {user.login ? <a href="/" onClick={this.signOut}>Sing Out</a> : <LinkButton to="/users/sign_up">Sing Up</LinkButton>}
+        {user.login ? <button type="button" onClick={this.signOut}>Sing Out</button> : <LinkButton to="/users/sign_up">Sing Up</LinkButton>}
       </header>
     );
   }
@@ -42,14 +40,15 @@ class Header extends Component {
 
 Header.propTypes = {
   getUser: PropTypes.func.isRequired,
-  logOutUser: PropTypes.func.isRequired,
+  location: PropTypes.string.isRequired,
   user: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.bool, PropTypes.string])).isRequired,
 };
 
 const structeredSelector = createStructuredSelector({
   user: (state) => state.user,
+  location: (state) => state.location,
 });
 
-const mapDispatchToProps = { getUser, logOutUser };
+const mapDispatchToProps = { getUser };
 
 export default connect(structeredSelector, mapDispatchToProps)(Header);
