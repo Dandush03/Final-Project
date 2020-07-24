@@ -26,12 +26,12 @@ class Header extends Component {
   signOut() {
     const { props: { logOutUser } } = this;
     logOutUser();
+    alert()
   }
 
   render() {
     const { props: { user } } = this;
     const { props: { logOutUser } } = this;
-    logOutUser();
     return (
       <header>
         {user.login ? <a href="/" onClick={this.signOut}>Sing Out</a> : <LinkButton to="/users/sign_up">Sing Up</LinkButton>}
