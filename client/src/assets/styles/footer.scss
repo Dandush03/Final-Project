@@ -1,0 +1,28 @@
+@import './global.scss';
+
+footer {
+  display: flex;
+  justify-content: center;
+
+  a,
+  button {
+    border: none;
+    background-color: $gray;
+    width: 25%;
+    outline: none;
+
+    img {
+      max-height: 100%;
+      width: 100%;
+      color: $gray-lighter;
+
+      svg {
+        height: 100%;
+      }
+    }
+
+    &:hover{
+      background-color: $blue;
+    }
+  }
+}

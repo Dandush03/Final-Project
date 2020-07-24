@@ -25,8 +25,7 @@ class Home extends Component {
       window.location.replace(`${location}users/sign_in`);
     }
     return (
-      <div className="App">
-        <header className="App-header">
+      <main className="App">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
             Edit
@@ -43,9 +42,8 @@ class Home extends Component {
           >
             Learn React
           </a>
-        </header>
         <LinkButton to="/">Back to home</LinkButton>
-      </div>
+      </main>
     );
   }
 }

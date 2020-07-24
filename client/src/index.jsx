@@ -4,8 +4,9 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 // Components
+import { Header } from './components';
+import { Footer } from './container';
 import { Home, NotFound, Tasks } from './pages';
-import { Header } from './container';
 
 // Assets
 import './assets/styles/index.scss';
@@ -25,6 +26,7 @@ ReactDOM.render(
         <Route path="/tasks" exact component={Tasks} />
         <Route component={NotFound} />
       </Switch>
+      <Footer />
     </BrowserRouter>
   </Provider>,
   document.getElementById('root'),

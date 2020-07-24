@@ -1,3 +1,4 @@
 import LinkButton from './LinkButton';
+import Header from './Header';
 
-export { LinkButton };
+export { LinkButton, Header };
