@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route  } from 'react-router-dom';
 
 // Components
-import {Home, NotFound, Tasks} from './pages';
+import { Home, NotFound, Tasks } from './pages';
+import { Header } from './container';
 
 // Assets
 import './assets/styles/index.scss';
@@ -17,15 +18,16 @@ const store = storeConfig();
 
 ReactDOM.render(
   <Provider store={store}>
-  <BrowserRouter>
-    <Switch>
-      <Route path='/' exact component={Home} />
-      <Route path='/tasks' exact component={Tasks} />
-      <Route component={NotFound} />
-    </Switch>
-  </BrowserRouter>
+    <BrowserRouter>
+      <Header />
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/tasks" exact component={Tasks} />
+        <Route component={NotFound} />
+      </Switch>
+    </BrowserRouter>
   </Provider>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
 
 // If you want your app to work offline and load faster, you can change

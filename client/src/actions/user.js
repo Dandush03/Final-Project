@@ -8,10 +8,10 @@ function userLoggedIn(json) {
   };
 }
 
-function userLoggedOut(json) {
+function userLoggedOut() {
   return {
     type: ActionType.USER_LOGGED_OUT,
-    payload: json,
+    payload: {login: false},
   };
 }
 
@@ -20,15 +20,19 @@ function getUser() {
   return  dispatch => {
     dispatch({ type: ActionType.CHECK_FOR_USER});
     fetch(fetchUrl)
-    .then(response => response.json())
+    .then(response => {
+      if (response.status === 401) {
+        return dispatch(userLoggedOut());
+      }
+      return response.json()
+    })
     .then((json) => {
-        console.log(json);
         if (json.login) {
           return dispatch(userLoggedIn(json));
         }
-        return dispatch(userLoggedOut(json));
+        return dispatch(userLoggedOut());
       })
-      .catch(error => console.log(error));
+      .catch((error) => console.log(error));
   };
 }
 

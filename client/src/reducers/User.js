@@ -6,7 +6,8 @@ export default (state = '', action) => {
       return action.payload;
     case types.USER_LOGGED_OUT:
       return action.payload;
-    default:
+      default:
+        console.log(action.type);
       return state;
   }
 };
