@@ -16,7 +16,7 @@ function userLoggedOut() {
 }
 
 function getUser() {
-  const fetchUrl = '/api'
+  const fetchUrl = '/api.json'
   return  dispatch => {
     dispatch({ type: ActionType.CHECK_FOR_USER});
     fetch(fetchUrl)

@@ -3,10 +3,13 @@
 Rails.application.routes.draw do
   devise_for :users 
 
+  get '/api', to: 'api#index'
+
   scope '/api', defaults: { format: 'json' } do
-    root 'api#index'
     resources :tasks, only: [:index] 
   end
+
+  root 'application#fallback_index_html"'
 
   get '*path', to: "application#fallback_index_html", constraints: ->(request) do
     !request.xhr? && request.format.html?
