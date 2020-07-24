@@ -7,11 +7,6 @@ class ApiController < ActionController::API
 
   def index
     user = user_loging_status
-    puts 'test'
-    puts user
-    puts 'test'
-    puts 'test'
-    puts 'test'
     respond_with do |format|
       format.html {redirect_to root_path}
       format.json { render :json => user }

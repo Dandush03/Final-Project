@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import PropTypes from 'prop-types';
-import { Redirect } from "react-router-dom";
 
 // Import Components
 import { LinkButton } from '../components';
@@ -14,16 +13,16 @@ import '../assets/styles/App.scss';
 
 class Home extends Component {
   constructor(props) {
-    super(props)
-    this.login = props.login
+    super(props);
+    this.login = props.login;
   }
 
   render() {
-    this.login = this.props.login
-    if(!this.login) {
+    const { props: { login } } = this;
+    this.login = login;
+    if (!this.login) {
       const location = window.location.toString();
-      console.log(location);
-      window.location.replace(location + "users/sign_in")
+      window.location.replace(`${location}users/sign_in`);
     }
     return (
       <div className="App">
@@ -52,7 +51,7 @@ class Home extends Component {
 }
 
 Home.propTypes = {
-  login: PropTypes.bool
+  login: PropTypes.bool.isRequired,
 };
 
 const structeredSelector = createStructuredSelector({

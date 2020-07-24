@@ -6,7 +6,7 @@ import thunk from 'redux-thunk';
 import reducers from '../reducers';
 
 const initState = {
-  user: {login: true},
+  user: { login: true, name: '' },
 };
 
 export default function configureStore() {
