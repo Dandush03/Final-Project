@@ -67,7 +67,7 @@ function logOutUser() {
         return response.json();
       })
       .then((json) => {
-        alert(response);
+        alert(json);
         console.log(json);
         return json;
       })
