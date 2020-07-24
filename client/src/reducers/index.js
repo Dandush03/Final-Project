@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import UserReducer from './user';
+import UserReducer from './users';
 import LocationReducer from './location';
 
 export default combineReducers({
