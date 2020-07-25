@@ -3,9 +3,6 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import PropTypes from 'prop-types';
 
-// Import Components
-import { LinkButton } from '../components';
-
 // Import Assets
 import logo from '../assets/images/logo.svg';
 
@@ -26,23 +23,22 @@ class Home extends Component {
     }
     return (
       <main className="App">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit
-            {' '}
-            <code>src/App.js</code>
-            {' '}
-            and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        <LinkButton to="/">Back to home</LinkButton>
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit
+          {' '}
+          <code>src/App.js</code>
+          {' '}
+          and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
       </main>
     );
   }

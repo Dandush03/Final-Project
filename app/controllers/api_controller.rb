@@ -19,7 +19,7 @@ class ApiController < ActionController::API
     if user_signed_in?
       test = current_user.inspect
       user_name = current_user.full_name.to_s
-      user_json = {login: true, user: user_name}
+      user_json = {login: true, name: user_name}
     else 
       user_json = {login: false}
     end

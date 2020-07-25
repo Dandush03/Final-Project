@@ -1,13 +1,14 @@
 import React from 'react';
-
-import { LinkButton } from '../components';
+import { Link } from 'react-router-dom';
 
 function NotFound() {
   return (
     <main>
       <h1>Error: 401</h1>
       <h2>Page Not Found</h2>
-      <LinkButton to="/">Go Back Home</LinkButton>
+      <Link to="/">
+        Go Back Home
+      </Link>
     </main>
   );
 }

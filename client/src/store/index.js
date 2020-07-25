@@ -10,6 +10,7 @@ const location = window.location.toString();
 const initState = {
   user: { login: true, name: '' },
   location,
+  task: { active: false, current: {}, taskPop: false },
 };
 
 export default function configureStore() {

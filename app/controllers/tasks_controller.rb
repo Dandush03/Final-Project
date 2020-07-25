@@ -5,4 +5,9 @@ class TasksController < ApiController
     tasks = Task.all
     respond_with(tasks)
   end
+
+  def searcher
+    tasks = current_user.tasks.where(end: nil).first
+    respond_with(tasks)
+  end
 end

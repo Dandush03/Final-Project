@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   scope '/api', defaults: { format: 'json' } do
     resources :tasks, only: [:index] 
+    get '/searcher', to: 'tasks#searcher'
   end
 
   root 'application#fallback_index_html"'

@@ -1,0 +1,10 @@
+@import './global.scss';
+
+.new-task {
+  position: absolute;
+  bottom: 70px;
+  left: 0;
+  height: 200px;
+  background-color: $blue-light;
+  width: 70%;
+}
