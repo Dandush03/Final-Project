@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/api', to: 'api#index'
 
   scope '/api', defaults: { format: 'json' } do
-    resources :tasks, only: [:index] 
+    resources :tasks, only: [:index, :update, :create] 
     get '/searcher', to: 'tasks#searcher'
   end
 

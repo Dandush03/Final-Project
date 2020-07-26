@@ -5,7 +5,7 @@ class Task < ApplicationRecord
   validates :description, presence: true, length: { maximum: 255 }
 
   before_save :task_create
-  after_update :task_close
+  before_update :task_close
 
   def task_create
     if self.start.nil?

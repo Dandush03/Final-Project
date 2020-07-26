@@ -18,8 +18,5 @@
     "eslint-plugin-react-hooks": "^4.0.8",
     "eslint-plugin-standard": "^4.0.1"
   },
-  "license": "MIT",
-  "dependencies": {
-    "sass-lint": "^1.13.1"
-  }
+  "license": "MIT"
 }

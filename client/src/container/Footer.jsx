@@ -11,14 +11,18 @@ import { searchTask, openPopUp, closePopUp } from '../actions/task';
 // Styles
 import '../assets/styles/footer.scss';
 
+// Javascripts
+import Timer from '../javascript/time';
+
 // Components
-import TaskPopUp from './taskPopUp';
+import { TaskPopUp } from '../components/index';
 
 // Images
 import addTaskImg from '../assets/images/add.svg';
 import trackTasksImg from '../assets/images/track.svg';
 import heroProgresImg from '../assets/images/progress.svg';
 import heroSession from '../assets/images/user.svg';
+import StopImg from '../assets/images/stop.svg';
 
 class Footer extends Component {
   constructor(props) {
@@ -53,18 +57,11 @@ class Footer extends Component {
 
   timer() {
     const { props: { task: { current } } } = this;
-    const time = new Date(current.start);
-    const now = new Date();
-    const ms = now - time;
-    const hrs = Math.floor((ms / 60000) / 60);
-    const tempMin = Math.floor((ms / 60000) % 60);
-    const min = tempMin.toString().length === 1 ? `0${tempMin}` : tempMin;
-    const tempSec = Math.floor((ms / 1000) % 60);
-    const sec = tempSec.toString().length === 1 ? `0${tempSec}` : tempSec;
-
-    this.setState({
-      time: `${hrs}:${min}:${sec}`,
-    });
+    if (current) {
+      this.setState({
+        time: Timer(current.start),
+      });
+    }
   }
 
   render() {
@@ -72,9 +69,9 @@ class Footer extends Component {
     return (
       <footer>
         <button type="button" onClick={this.popUp} className={task.active ? 'warning' : ''}>
-          {task.active ? time : <img src={addTaskImg} alt="Add Tasks" /> }
-          {task.taskPop ? <TaskPopUp /> : null}
+          {task.active ? <span className={task.taskPop ? 'open' : ''}>{task.taskPop ? <img src={StopImg} alt="Add Tasks" /> : time}</span> : <img src={addTaskImg} alt="Add Tasks" /> }
         </button>
+        {task.taskPop ? <TaskPopUp timer={time} task={task.current} tick={this.sec} /> : null}
         <NavLink exact to="/tasks" activeClassName="selected">
           <img src={trackTasksImg} alt="Track Your Task" />
         </NavLink>

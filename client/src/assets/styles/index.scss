@@ -1,16 +1,16 @@
-@import './global.scss';
+@import './global';
 
 * {
   box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  font-family: 'Helvetica Neue Light';
-  -webkit-font-smoothing: antialiased;
-  width: 100vw;
+  -webkit-font-smoothing: antialiased; // sass-lint:disable-line no-vendor-prefixes
+  font-family: $font;
   height: 100vh;
+  margin: 0;
   overflow: hidden;
+  width: 100vw;
 }
 
 header {
@@ -21,8 +21,8 @@ header {
 
 main {
   height: calc(100vh - 70px - 50px);
-  width: 100vw;
   overflow: hidden;
+  width: 100vw;
 }
 
 footer {
@@ -35,5 +35,12 @@ footer {
   font-family: 'Helvetica Neue Light';
   font-style: normal;
   font-weight: light;
-  src: font-url('./fonts/HelveticaNeue-Light.ttf') format('truetype');
+  src: url('./fonts/HelveticaNeue-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Chathura Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: url('./fonts/Chathura-Regular.ttf') format('truetype');
 }
