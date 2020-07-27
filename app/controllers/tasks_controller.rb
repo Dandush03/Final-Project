@@ -14,10 +14,10 @@ class TasksController < ApiController
 
   def update
     task = Task.find(params[:id])
-    unless permitted_update_params[:start] 
-      task.end = Time.at(permitted_update_params[:end]/1000)
-      return task.save
-    end
+    # unless permitted_update_params[:start]
+    task.end = Time.at(permitted_update_params[:end] / 1000)
+    task.save
+    # end
   end
 
   def searcher
@@ -25,7 +25,7 @@ class TasksController < ApiController
     respond_with(tasks)
   end
 
-  private 
+  private
 
   def permitted_update_params
     att_update = %i[end]

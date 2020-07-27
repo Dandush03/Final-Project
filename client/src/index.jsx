@@ -7,7 +7,7 @@ import appHeight from './javascript/documentHeight';
 
 // Components
 import { Header } from './components';
-import { Footer } from './container';
+import Footer from './container';
 import { Home, NotFound, Tasks } from './pages';
 
 // Assets

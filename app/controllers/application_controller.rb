@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
 
@@ -8,22 +6,10 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def fallback_index_html
-    render :file => 'public/index.html'
+    render file: 'public/index.html'
   end
 
   protected
-
-  #def after_update_path_for(resource)
-  #  culture_path(resource)
-  #end
-
-  #def after_sign_up_path_for(resource)
-  #  culture_path(resource)
-  #end
-
-  #def user_root_path
-  #  culture_path(current_user)
-  #end
 
   def configure_permitted_parameters
     att_create = %i[profile_img full_name username email password password_confirmation]

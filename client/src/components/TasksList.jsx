@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 // Javascript
@@ -10,25 +10,17 @@ import '../assets/styles/tasksList.scss';
 // Import Components
 import TaskGroup from './TaskGroup';
 
-export default class TaskForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { statusMsg: null, status: null };
-  }
-
-  render() {
-    const { props: { data } } = this;
-    const GroupData = GroupTask(data);
-    const container = [];
-    Object.keys(GroupData).forEach((keys) => {
-      container.push(<TaskGroup data={GroupData[keys]} date={keys} key={`date-${keys}`} />);
-    });
-    return (
-      <div className="tasks-list">
-        {container}
-      </div>
-    );
-  }
+export default function TaskForm({ data }) {
+  const GroupData = GroupTask(data);
+  const container = [];
+  Object.keys(GroupData).forEach((keys) => {
+    container.push(<TaskGroup data={GroupData[keys]} date={keys} key={`date-${keys}`} />);
+  });
+  return (
+    <div className="tasks-list">
+      {container}
+    </div>
+  );
 }
 
 TaskForm.propTypes = {

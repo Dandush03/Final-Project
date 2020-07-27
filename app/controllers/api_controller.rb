@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class ApiController < ActionController::API
   respond_to :html, :json
 
@@ -8,20 +6,19 @@ class ApiController < ActionController::API
   def index
     user = user_loging_status
     respond_with do |format|
-      format.html {redirect_to root_path}
-      format.json { render :json => user }
+      format.html { redirect_to root_path }
+      format.json { render json: user }
     end
   end
 
-  protected 
+  protected
 
   def user_loging_status
     if user_signed_in?
-      test = current_user.inspect
       user_name = current_user.full_name.to_s
-      user_json = {login: true, name: user_name}
-    else 
-      user_json = {login: false}
+      user_json = { login: true, name: user_name }
+    else
+      user_json = { login: false }
     end
     user_json
   end

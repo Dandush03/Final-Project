@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Task < ApplicationRecord
   validates :name, presence: true, length: { maximum: 30 }
   validates :description, length: { maximum: 255 }
@@ -8,18 +6,16 @@ class Task < ApplicationRecord
   before_update :task_close
 
   def task_create
-    if self.start.nil?
-      self.start = Time.now()
-    end
+    self.start = Time.now if start.nil?
   end
 
-  def task_close    
-    unless self.start.nil? || self.end.nil?
-      total = self.end - self.start
-      self.minutes = (total/60).floor % 60
-      self.seconds = total.to_i % 60
-      self.hours = ((total/60).floor / 60)
-    end
+  def task_close
+    return if start.nil? || self.end.nil?
+
+    total = self.end - start
+    self.minutes = (total / 60).floor % 60
+    self.seconds = total.to_i % 60
+    self.hours = ((total / 60).floor / 60)
   end
 
   belongs_to :category

@@ -1,7 +1,7 @@
 @import './global';
 
-$opened-1:rgba(255, 0, 0, 0.7);
-$opened-2:rgba(168, 4, 4, 0.7);
+$opened-1: rgba(255, 0, 0, .7);
+$opened-2: rgba(168, 4, 4, .7);
 
 @keyframes counter {
   0% { background-color: $blue-light;}
