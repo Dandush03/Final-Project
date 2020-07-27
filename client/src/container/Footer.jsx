@@ -15,7 +15,7 @@ import '../assets/styles/footer.scss';
 import Timer from '../javascript/time';
 
 // Components
-import { TaskPopUp } from '../components/index';
+import { TaskPopUp, TaskForm } from '../components/index';
 
 // Images
 import addTaskImg from '../assets/images/add.svg';
@@ -71,7 +71,8 @@ class Footer extends Component {
         <button type="button" onClick={this.popUp} className={task.active ? 'warning' : ''}>
           {task.active ? <span className={task.taskPop ? 'open' : ''}>{task.taskPop ? <img src={StopImg} alt="Add Tasks" /> : time}</span> : <img src={addTaskImg} alt="Add Tasks" /> }
         </button>
-        {task.taskPop ? <TaskPopUp timer={time} task={task.current} tick={this.sec} /> : null}
+        {task.taskPop && task.active ? <TaskPopUp timer={time} task={task.current} /> : null}
+        {task.taskPop && !task.active ? <TaskForm /> : null}
         <NavLink exact to="/tasks" activeClassName="selected">
           <img src={trackTasksImg} alt="Track Your Task" />
         </NavLink>

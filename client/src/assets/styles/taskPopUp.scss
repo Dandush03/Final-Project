@@ -1,8 +1,9 @@
 @import './global';
 
 
-$botton-c: rgb(155, 0, 0);
-$botton-bg: rgba(165, 53, 53, .678);
+$botton-c: #fff;
+$botton-bg: rgba(255, 0, 0, .8);
+$h1-bg: rgba(0, 255, 0, .5);
 
 @keyframes open {
   from {
@@ -41,10 +42,17 @@ $botton-bg: rgba(165, 53, 53, .678);
   }
 
   h1 {
-    font-size: 150%;
+    background-color: $h1-bg;
+    border-radius: 10px;
+    color: $botton-c;
+    font-size: 120%;
+    font-weight: bolder;
     line-height: 100%;
+    margin: auto;
+    padding: 5px;
     text-align: center;
-    text-transform: capitalize;
+    text-transform: uppercase;
+    width: 80%;
   }
 
   button {
@@ -54,9 +62,11 @@ $botton-bg: rgba(165, 53, 53, .678);
     color: $botton-c;
     display: flex;
     font-size: large;
+    font-weight: bolder;
     height: 50%;
     justify-content: center;
     padding: 20px;
+    text-transform: uppercase;
     width: 70px;
 
     span {

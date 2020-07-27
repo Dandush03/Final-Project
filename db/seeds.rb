@@ -13,7 +13,6 @@ Category.create(
     { categories: 'working' },
     { categories: 'cleaning' },
     { categories: 'eating' },
-    { categories: 'cleaning' },
     { categories: 'sleeping' }
   ]
 )

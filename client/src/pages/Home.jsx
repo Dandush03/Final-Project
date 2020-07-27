@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 
 // Import Assets
 import logo from '../assets/images/logo.svg';
-
 import '../assets/styles/App.scss';
 
 class Home extends Component {

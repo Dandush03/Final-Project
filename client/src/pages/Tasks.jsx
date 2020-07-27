@@ -5,6 +5,10 @@ import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 
 // Import Components
+import { TasksList } from '../components/index';
+
+// Action
+import getTasks from '../actions/tasksList';
 
 // Import Assets
 import '../assets/styles/App.scss';
@@ -16,41 +20,36 @@ class Tasks extends Component {
   }
 
   componentDidMount() {
-    window.fetch('/api/tasks')
-      .then((response) => response.json())
-      // eslint-disable-next-line no-console
-      .then((json) => console.log(json))
-      // eslint-disable-next-line no-console
-      .catch((error) => console.log(error));
-
-    window.fetch('/api')
-      .then((response) => response.json())
-      // eslint-disable-next-line no-console
-      .then((json) => console.log(json))
-      // eslint-disable-next-line no-console
-      .catch((error) => console.log(error));
+    const { props: { getTasks } } = this;
+    getTasks();
   }
 
   render() {
-    const { props: { login } } = this;
+    const { props: { taskList, login } } = this;
+
     this.login = login;
     if (!this.login) {
       return <Redirect to="/" />;
     }
     return (
-      <main />
+      <main>
+        <TasksList data={taskList} />
+      </main>
     );
   }
 }
 
 Tasks.propTypes = {
+  taskList: PropTypes.arrayOf(PropTypes.object).isRequired,
+  getTasks: PropTypes.func.isRequired,
   login: PropTypes.bool.isRequired,
 };
 
 const structeredSelector = createStructuredSelector({
+  taskList: (state) => state.taskList,
   login: (state) => state.user.login,
 });
 
-const mapDispatchToProps = { };
+const mapDispatchToProps = { getTasks };
 
 export default connect(structeredSelector, mapDispatchToProps)(Tasks);

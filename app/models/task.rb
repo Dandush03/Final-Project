@@ -2,7 +2,7 @@
 
 class Task < ApplicationRecord
   validates :name, presence: true, length: { maximum: 30 }
-  validates :description, presence: true, length: { maximum: 255 }
+  validates :description, length: { maximum: 255 }
 
   before_save :task_create
   before_update :task_close

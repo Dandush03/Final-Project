@@ -11,6 +11,7 @@ const initState = {
   user: { login: true, name: '' },
   location,
   task: { active: false, current: {}, taskPop: false },
+  taskList: [{}],
 };
 
 export default function configureStore() {

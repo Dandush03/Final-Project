@@ -12,13 +12,6 @@ function closePopUp() {
   };
 }
 
-function openTask(json) {
-  return {
-    type: ActionType.OPEN_TASK,
-    payload: { active: true, current: json },
-  };
-}
-
 function statusTask(json) {
   let status;
   if (json) {
@@ -27,13 +20,6 @@ function statusTask(json) {
   return {
     type: ActionType.STATUS_TASK,
     payload: { active: status, current: json },
-  };
-}
-
-function closeTask() {
-  return {
-    type: ActionType.CLOSE_TASK,
-    payload: { login: false },
   };
 }
 
