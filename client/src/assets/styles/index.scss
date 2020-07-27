@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+:root {
+  --app-height: 100%;
+}
+
 body {
   -webkit-font-smoothing: antialiased; // sass-lint:disable-line no-vendor-prefixes
   font-family: $font;
@@ -20,9 +24,13 @@ header {
 }
 
 main {
-  height: calc(100% - 70px - 50px);
+  height: calc(100vh - 70px - 50px);
   overflow: auto;
   width: 100vw;
+
+  @media not all and (hover: hover) {
+    height: var(--app-height);
+  }
 }
 
 footer {

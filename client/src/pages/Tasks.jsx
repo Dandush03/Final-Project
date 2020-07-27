@@ -26,7 +26,6 @@ class Tasks extends Component {
 
   render() {
     const { props: { taskList, login } } = this;
-
     this.login = login;
     if (!this.login) {
       return <Redirect to="/" />;

@@ -20,7 +20,9 @@ export default class TaskForm extends Component {
     const { props: { data } } = this;
     const GroupData = GroupTask(data);
     const container = [];
-    Object.keys(GroupData).forEach((keys) => container.push(<TaskGroup data={GroupData[keys]} date={keys} />));
+    Object.keys(GroupData).forEach((keys) => {
+      container.push(<TaskGroup data={GroupData[keys]} date={keys} key={`date-${keys}`} />);
+    });
     // const Tasks = data.map((t) => <Task data={t} key={`Task-${t.id}`} />);
     return (
       <div className="tasks-list">

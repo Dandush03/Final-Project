@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import React from 'react';
-import PropTypes, { oneOfType } from 'prop-types';
+import PropTypes from 'prop-types';
 import Task from './Task';
 
 export default function TasksGroup({ data, date }) {
@@ -14,6 +14,6 @@ export default function TasksGroup({ data, date }) {
 }
 
 TasksGroup.propTypes = {
-  data: PropTypes.objectOf(oneOfType([PropTypes.string, PropTypes.number])).isRequired,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
   date: PropTypes.string.isRequired,
 };
