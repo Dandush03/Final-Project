@@ -2,7 +2,7 @@ class TasksController < ApiController
   respond_to :json, :xml
 
   def index
-    tasks = Task.all
+    tasks = Task.order('start DESC').all
     remove_values = %i[created_at updated_at user_id]
     respond_with(tasks.as_json(except: remove_values))
   end
