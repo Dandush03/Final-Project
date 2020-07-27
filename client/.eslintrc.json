@@ -24,6 +24,8 @@
     ],
     "rules": {
         "import/no-unresolved": 1,
-        "no-shadow": 0
+        "no-shadow": 0,
+        "href-no-hash": 0,
+        "img-has-alt": 0
     }
 }
