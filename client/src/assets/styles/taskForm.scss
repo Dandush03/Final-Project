@@ -33,7 +33,9 @@ $error: rgb(219, 0, 0);
   height: 375px;
   justify-content: space-between;
   left: 0;
-  position: absolute;
+  max-height: 80%;
+  overflow: auto;
+  position: fixed;
   width: 70%;
 
   h1,
