@@ -17,8 +17,13 @@ export default class TaskForm extends Component {
     const newData = { tasks: {} };
     let validate = true;
     [...data.entries()].forEach((elem) => {
-      if (!elem[1] && elem[0] === 'name') {
-        validate = false;
+      if (elem[0] === 'name') {
+        if (!elem[1]) {
+          validate = false;
+        }
+        if (elem[1].length > 30) {
+          validate = false;
+        }
       }
 
       const { tasks } = newData;
@@ -26,7 +31,7 @@ export default class TaskForm extends Component {
       Object.assign(tasks, { [elem[0]]: elem[1] });
     });
     if (!validate) {
-      this.setState({ statusMsg: '*Title Field is Mandatory', status: false });
+      this.setState({ statusMsg: '*Can\'t be Bigger than 30 Char or Empty', status: false });
       return;
     }
 

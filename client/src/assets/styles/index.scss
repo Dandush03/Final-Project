@@ -1,5 +1,7 @@
 @import './global';
 
+$bg: #f5f5f5;
+
 * {
   box-sizing: border-box;
 }
@@ -24,6 +26,7 @@ header {
 }
 
 main {
+  background-color: $bg;
   height: calc(100vh - 70px - 50px);
   overflow: auto;
   width: 100vw;

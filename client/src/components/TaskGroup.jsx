@@ -1,16 +1,40 @@
 /* eslint-disable camelcase */
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Task from './Task';
 
-export default function TasksGroup({ data, date }) {
-  const Tasks = data.map((t) => <Task data={t} key={`Task-${t.id}`} />);
-  return (
-    <div className="task-group">
-      <h2>{date}</h2>
-      {Tasks}
-    </div>
-  );
+export default class TasksGroup extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { opened: false };
+    this.openedHandler = this.openedHandler.bind(this);
+  }
+
+  openedHandler() {
+    const { state: { opened } } = this;
+    if (opened) {
+      this.setState({ opened: false });
+      return;
+    }
+    this.setState({ opened: true });
+  }
+
+  render() {
+    const { props: { data, date }, state: { opened } } = this;
+    const Tasks = data.map((t) => <Task data={t} key={`Task-${t.id}`} />);
+    return (
+      <div
+        className={`task-group ${opened ? 'open' : 'close'}`}
+        onClick={this.openedHandler}
+        onKeyDown={this.openedHandler}
+        role="button"
+        tabIndex={0}
+      >
+        <h2>{date}</h2>
+        {Tasks}
+      </div>
+    );
+  }
 }
 
 TasksGroup.propTypes = {
