@@ -10,7 +10,7 @@ $error: rgb(219, 0, 0);
     bottom: 70px;
     height: 0;
     overflow: hidden;
-    position: absolute;
+    position: fixed;
     width: 0;
   }
 
@@ -18,7 +18,7 @@ $error: rgb(219, 0, 0);
     bottom: 70px;
     height: 375px;
     overflow: hidden;
-    position: absolute;
+    position: fixed;
     width: 70%;
   }
 }

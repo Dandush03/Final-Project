@@ -11,11 +11,24 @@ $form-warning-color: rgba(255, 121, 121, 1);
 $form-warning-title-color: rgba(255, 177, 77, 1);
 $space: 5px;
 $font-size:1em;
+$blue: #62b5e5;
+
+body {
+  background-color: $blue;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  height: var(--app-height);
+  width: 100vw;
+}
 
 .container {
+  align-self: center;
   margin: auto;
   max-width: $pad-width;
-  height: 100%;
+  height: fit-content;
+  width: 100%;
 }
 
 .wrapper {
@@ -37,6 +50,12 @@ $font-size:1em;
   &>h2 {
     color: $form-input-color;
     margin: $space*5 auto $space*0 auto;
+  }
+
+  &>a {
+    color: $form-warning-title-color;
+    margin: 0 10px;
+    text-decoration: none;
   }
 
   &>form {

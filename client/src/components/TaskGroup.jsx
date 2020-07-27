@@ -10,6 +10,14 @@ export default class TasksGroup extends Component {
     this.openedHandler = this.openedHandler.bind(this);
   }
 
+  componentDidMount() {
+    const { props: { date } } = this;
+    const currentDate = new Date(Date.now()).toDateString();
+    if (date === currentDate) {
+      this.openedHandler();
+    }
+  }
+
   openedHandler() {
     const { state: { opened } } = this;
     if (opened) {
