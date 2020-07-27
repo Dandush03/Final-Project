@@ -1,9 +1,9 @@
 import Header from './Header';
-import TaskPopUp from './TaskPopUp';
+import TaskStopForm from './TaskStopForm';
 import TaskForm from './TaskForm';
 import TasksList from './TasksList';
 import Task from './Task';
 
 export {
-  Header, TaskPopUp, TaskForm, TasksList, Task,
+  Header, TaskStopForm, TaskForm, TasksList, Task,
 };
