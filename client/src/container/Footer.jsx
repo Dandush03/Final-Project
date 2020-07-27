@@ -44,7 +44,7 @@ class Footer extends Component {
 
   signOut() {
     const { props: { location } } = this;
-    window.location.replace(`${location}users/sign_out`);
+    window.location.replace(`${location}/users/sign_out`);
   }
 
   popUp() {

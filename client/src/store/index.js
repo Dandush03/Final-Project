@@ -5,7 +5,7 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import reducers from '../reducers';
 
-const location = window.location.toString();
+const location = window.location.origin.toString();
 
 const initState = {
   user: { login: true, name: '' },
