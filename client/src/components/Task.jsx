@@ -39,7 +39,7 @@ export default class Task extends Component {
       },
     } = this;
 
-    const categoryArr = ['Work', 'Clean', 'Studies', 'sleep'];
+    const categoryArr = ['Work', 'Studies', 'Eat', 'Sleep'];
     const tempStart = new Date(Date.parse(start)).toTimeString();
     const tempEnd = new Date(Date.parse(end)).toTimeString();
     return (
