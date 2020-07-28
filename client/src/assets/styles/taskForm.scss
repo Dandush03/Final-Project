@@ -2,8 +2,9 @@
 
 
 $botton-c: #000;
-$botton-bg: rgba(0, 255, 0, .5);
+$botton-bg: $blue;
 $error: rgb(219, 0, 0);
+$white: #f5f5f5;
 
 @keyframes openForm {
   from {
@@ -25,7 +26,8 @@ $error: rgb(219, 0, 0);
 
 .task-form {
   animation: openForm ease-in .4s;
-  background-color: $blue-lighter;
+  background-color: $white;
+  border: 1px $blue outset;
   border-top-right-radius: 10px;
   bottom: 70px;
   display: flex;

@@ -10,10 +10,28 @@ $white: #fff;
     color: $gray;
     outline: 0;
     overflow: hidden;
+    position: relative;
     transition: max-height 1s ease;
+
+    &::before {
+      background-image: url('../images/arrow-right.svg');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+      content: '';
+      height: 40px;
+      position: absolute;
+      right: 10px;
+      width: 25px;
+      z-index: 0;
+    }
 
     &.close {
       max-height: 40px;
+
+      &::before {
+        transform: rotate(90deg);
+      }
     }
 
     &.open {
@@ -21,6 +39,10 @@ $white: #fff;
       max-height: var(--app-height);
       overflow-y: auto;
       transition-duration: 2s;
+
+      &::before {
+        transform: rotate(180deg);
+      }
     }
 
     >h2 {

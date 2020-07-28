@@ -2,8 +2,9 @@
 
 
 $botton-c: #fff;
-$botton-bg: rgba(255, 0, 0, .8);
-$h1-bg: rgba(0, 255, 0, .5);
+$white: #f5f5f5;
+$botton-bg: rgb(157, 197, 48);
+$h1-bg: $blue;
 
 @keyframes open {
   from {
@@ -23,7 +24,8 @@ $h1-bg: rgba(0, 255, 0, .5);
 
 .new-task {
   animation: open ease-in .4s;
-  background-color: $blue-lighter;
+  background-color: $white;
+  border: 1px $blue outset;
   border-top-right-radius: 10px;
   bottom: 70px;
   display: flex;
@@ -84,6 +86,7 @@ $h1-bg: rgba(0, 255, 0, .5);
   }
 
   form {
+    background-color: $botton-c;
     display: flex;
     justify-content: space-between;
     padding: 0 30px;

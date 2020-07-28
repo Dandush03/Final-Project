@@ -4,7 +4,8 @@ import TaskForm from './TaskForm';
 import TasksList from './TasksList';
 import Task from './Task';
 import ProgressBar from './ProgressBar';
+import Achivements from './Achivements';
 
 export {
-  Header, TaskStopForm, TaskForm, TasksList, Task, ProgressBar,
+  Header, TaskStopForm, TaskForm, TasksList, Task, ProgressBar, Achivements,
 };

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 // Styles
 import 'react-circular-progressbar/dist/styles.css';
 
-export default function ProgressBar({ percentage, name }) {
+export default function Achivements({ percentage, name }) {
   return (
     <div className="progress-container">
       <CircularProgressbar
@@ -20,7 +20,7 @@ export default function ProgressBar({ percentage, name }) {
   );
 }
 
-ProgressBar.propTypes = {
+Achivements.propTypes = {
   percentage: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
 };
