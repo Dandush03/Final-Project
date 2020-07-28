@@ -1,5 +1,7 @@
 import * as ActionType from './actionsType';
 
+import { timeConverter } from '../javascript/time';
+
 function openPopUp() {
   return {
     type: ActionType.TASK_POP_OPEN,
@@ -23,6 +25,16 @@ function statusTask(json) {
   };
 }
 
+function startTimer(time, category) {
+  const timer = timeConverter(time);
+  return (dispatch) => dispatch(
+    {
+      type: ActionType.UPDATE_TIME,
+      payload: { timer, category },
+    },
+  );
+}
+
 function searchTask() {
   const fetchUrl = '/api/searcher.json';
   return (dispatch) => {
@@ -35,4 +47,6 @@ function searchTask() {
   };
 }
 
-export { searchTask, openPopUp, closePopUp };
+export {
+  searchTask, openPopUp, closePopUp, startTimer,
+};

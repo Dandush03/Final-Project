@@ -2,26 +2,27 @@ class TasksController < ApiController
   respond_to :json, :xml
 
   def index
-    tasks = Task.order('start DESC').all
+    tasks = current_user.tasks.order('start DESC').all
     remove_values = %i[created_at updated_at user_id]
     respond_with(tasks.as_json(except: remove_values))
   end
 
   def create
+    search_active = current_user.tasks.where(end: nil).first
     task = current_user.tasks.new(permitted_create_params)
-    task.save
+    task.save if search_active.nil?
   end
 
   def update
-    task = Task.find(params[:id])
-    # unless permitted_update_params[:start]
+    task = current_user.tasks.find(params[:id])
+    # unless params[:start]
     task.end = Time.at(permitted_update_params[:end] / 1000)
     task.save
     # end
   end
 
   def search_by_category
-    tasks = current_user.tasks.where(permitted_search_params)
+    tasks = current_user.tasks.where(search_params_scope)
     remove_values = %i[created_at updated_at user_id]
     respond_with(tasks.as_json(except: remove_values))
   end
@@ -38,10 +39,13 @@ class TasksController < ApiController
     params.require(:task).permit(att_update)
   end
 
-  def permitted_search_params
-    search_date = Time.at(params[:start].to_i / 1000).strftime("%d/%m/%Y")
-    search_date = Date.strptime(search_date, '%d/%m/%Y').all_day
-    newParams = {:start => search_date, :category_id => params[:category_id] }
+  def search_params_scope
+    range = case params[:range]
+            when 7 then Time.now.all_week
+            when 30 then Time.now.all_month
+            else Time.now.all_day
+            end
+    { start: range, category_id: params[:category_id] }
   end
 
   def permitted_create_params

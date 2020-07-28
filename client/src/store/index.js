@@ -14,6 +14,7 @@ const initState = {
   taskByCategory: {
     working: [], cleaning: [], sleeping: [], studying: [],
   },
+  timer: { time: null, category: null },
 };
 
 export default function configureStore() {

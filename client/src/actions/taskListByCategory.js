@@ -17,9 +17,9 @@ function geDataFail() {
 }
 
 // eslint-disable-next-line camelcase
-const fetchFuntion = (start, category_id) => {
+const fetchFuntion = (range, category_id) => {
   const task = {
-    start,
+    range,
     category_id,
   };
   const url = new URL(`${window.location.origin}/api/searcher/by_category_date`);
@@ -32,14 +32,14 @@ const fetchFuntion = (start, category_id) => {
   return url;
 };
 
-function loadProgressData(date) {
+function loadProgressData(range) {
   return (dispatch) => {
     dispatch({ type: ActionTypes.GET_TASK_BY });
     Promise.all([
-      fetch(fetchFuntion(date, '1')),
-      fetch(fetchFuntion(date, '2')),
-      fetch(fetchFuntion(date, '3')),
-      fetch(fetchFuntion(date, '4')),
+      fetch(fetchFuntion(range, '1')),
+      fetch(fetchFuntion(range, '2')),
+      fetch(fetchFuntion(range, '3')),
+      fetch(fetchFuntion(range, '4')),
     ])
       .then(async ([w, s, e, sl]) => {
         const working = await w.json();

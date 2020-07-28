@@ -6,13 +6,15 @@ import PropTypes from 'prop-types';
 
 // Action
 import getUser from '../actions/user';
-import { searchTask, openPopUp, closePopUp } from '../actions/task';
+import {
+  searchTask, openPopUp, closePopUp, startTimer,
+} from '../actions/task';
 
 // Styles
 import '../assets/styles/footer.scss';
 
 // Javascripts
-import Timer from '../javascript/time';
+import { timeToString } from '../javascript/time';
 
 // Components
 import { TaskStopForm, TaskForm } from '../components/index';
@@ -30,15 +32,15 @@ class Footer extends Component {
     this.state = { time: '' };
     this.signOut = this.signOut.bind(this);
     this.popUp = this.popUp.bind(this);
-    this.timer = this.timer.bind(this);
+    this.cronometer = this.cronometer.bind(this);
   }
 
   componentDidMount() {
-    const { props: { getUser, searchTask }, timer } = this;
+    const { props: { getUser, searchTask }, cronometer } = this;
     getUser();
     searchTask();
     this.sec = setInterval(() => {
-      timer();
+      cronometer();
     }, 1000);
   }
 
@@ -55,12 +57,13 @@ class Footer extends Component {
     return openPopUp();
   }
 
-  timer() {
-    const { props: { task: { current } } } = this;
+  cronometer() {
+    const { props: { task: { current }, startTimer, timer } } = this;
     if (current) {
       this.setState({
-        time: Timer(current.start),
+        time: timeToString(timer.timer),
       });
+      startTimer(current.start, current.category_id);
     }
   }
 
@@ -93,16 +96,19 @@ Footer.propTypes = {
   openPopUp: PropTypes.func.isRequired,
   closePopUp: PropTypes.func.isRequired,
   searchTask: PropTypes.func.isRequired,
+  startTimer: PropTypes.func.isRequired,
   task: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.bool, PropTypes.object])).isRequired,
+  timer: PropTypes.objectOf(PropTypes.number).isRequired,
 };
 
 const structeredSelector = createStructuredSelector({
   location: (state) => state.location,
   task: (state) => state.task,
+  timer: (state) => state.timer,
 });
 
 const mapDispatchToProps = {
-  getUser, searchTask, openPopUp, closePopUp,
+  getUser, searchTask, openPopUp, closePopUp, startTimer,
 };
 
 export default connect(structeredSelector, mapDispatchToProps)(Footer);

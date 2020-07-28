@@ -1,0 +1,24 @@
+@import './global';
+
+.progress {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-y: scroll;
+
+  .progress-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: calc(100% / 3);
+    min-width: calc(100% / 3);
+    overflow: hidden;
+    padding: 10px;
+
+    span {
+      align-self: center;
+      color: $gray;
+      font-size: 90%;
+      margin: 10px;
+    }
+  }
+}
