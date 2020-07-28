@@ -40,11 +40,13 @@ class TasksController < ApiController
   end
 
   def search_params_scope
-    range = case params[:range]
-            when 7 then Time.now.all_week
-            when 30 then Time.now.all_month
+    range = case params[:range].to_i
+            when 7 then Date.today.all_week
+            when 30 then Date.today.all_month
             else Time.now.all_day
             end
+    puts range
+
     { start: range, category_id: params[:category_id] }
   end
 

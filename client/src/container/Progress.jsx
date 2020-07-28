@@ -22,6 +22,7 @@ class Progress extends Component {
   constructor(props) {
     super(props);
     this.state = { range: 1 };
+    this.handlerChanger = this.handlerChanger.bind(this);
   }
 
   componentDidMount() {
@@ -29,8 +30,15 @@ class Progress extends Component {
     loadData(range);
   }
 
+  handlerChanger(e) {
+    const { props: { loadData } } = this;
+    this.setState({ range: e.target.value });
+    loadData(e.target.value);
+  }
+
   render() {
     const {
+      state: { range },
       props: {
         taskByCategory: {
           working, studing, eating, sleeping,
@@ -41,12 +49,22 @@ class Progress extends Component {
     const sExtra = timer.category === 2 ? timer.timer : 0;
     const eExtra = timer.category === 3 ? timer.timer : 0;
     const slExtra = timer.category === 4 ? timer.timer : 0;
+
     return (
-      <div className="progress">
-        {working ? <ProgressBar percentage={GroupData(working, 10, wExtra)} name="Working" /> : null}
-        {studing ? <ProgressBar percentage={GroupData(studing, 4, sExtra)} name="Studing" /> : null}
-        {eating ? <ProgressBar percentage={GroupData(eating, 2, eExtra)} name="Eating" /> : null}
-        {sleeping ? <ProgressBar percentage={GroupData(sleeping, 8, slExtra)} name="Sleeping" /> : null}
+      <div>
+        <div>
+          <select name="date" id="date-range" onChange={this.handlerChanger}>
+            <option value="1">Today</option>
+            <option value="7">This Week</option>
+            <option value="30">This Month</option>
+          </select>
+        </div>
+        <div className="progress">
+          {working ? <ProgressBar percentage={GroupData(working, (10 * range), wExtra)} name="Working" /> : null}
+          {studing ? <ProgressBar percentage={GroupData(studing, (4 * range), sExtra)} name="Studing" /> : null}
+          {eating ? <ProgressBar percentage={GroupData(eating, (2 * range), eExtra)} name="Eating" /> : null}
+          {sleeping ? <ProgressBar percentage={GroupData(sleeping, (8 * range), slExtra)} name="Sleeping" /> : null}
+        </div>
       </div>
     );
   }
