@@ -28,11 +28,11 @@ class Progress extends Component {
   componentDidMount() {
     const { props: { loadData } } = this;
     loadData(this.state.currentDate);
+
   }
 
   render() {
     const { props: { taskByCategory } } = this;
-    console.log(taskByCategory);
     return (
       <ProgressCircle percentage={60} image={working} />
     );

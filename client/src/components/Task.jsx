@@ -42,6 +42,12 @@ export default class Task extends Component {
     const categoryArr = ['Work', 'Studies', 'Eat', 'Sleep'];
     const tempStart = new Date(Date.parse(start)).toTimeString();
     const tempEnd = new Date(Date.parse(end)).toTimeString();
+    let tempSec;
+    let tempMin;
+    if (seconds) {
+      tempSec = seconds.toString().length === 1 ? `0${seconds}` : seconds;
+      tempMin = minutes.toString().length === 1 ? `0${minutes}` : minutes;
+    }
     return (
       <div
         className={`task ${opened ? 'open' : 'close'}`}
@@ -57,7 +63,7 @@ export default class Task extends Component {
             <span>{categoryArr[category_id - 1]}</span>
           </div>
           <div className="time">
-            <span>{tempEnd === 'Invalid Date' ? 'Still Running' : `${hours}:${minutes}:${seconds}`}</span>
+            <span>{tempEnd === 'Invalid Date' ? 'Still Running' : `${hours}:${tempMin}:${tempSec}`}</span>
           </div>
         </div>
         <div className="more-info">
