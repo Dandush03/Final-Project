@@ -4,8 +4,10 @@ import { createStructuredSelector } from 'reselect';
 import PropTypes from 'prop-types';
 
 // Import Assets
-import logo from '../assets/images/logo.svg';
 import '../assets/styles/App.scss';
+
+// Import Components
+import { Progress } from '../container/index';
 
 class Home extends Component {
   constructor(props) {
@@ -22,22 +24,7 @@ class Home extends Component {
     }
     return (
       <main className="App">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit
-          {' '}
-          <code>src/App.js</code>
-          {' '}
-          and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Progress />
       </main>
     );
   }

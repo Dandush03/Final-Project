@@ -72,7 +72,7 @@ export default class TaskForm extends Component {
             <label htmlFor="category_id">
               <select name="category_id">
                 <option value="1">Working</option>
-                <option value="2">Cleaning</option>
+                <option value="2">Studing</option>
                 <option value="3">Eating</option>
                 <option value="4">Sleeping</option>
               </select>

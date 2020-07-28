@@ -20,6 +20,12 @@ class TasksController < ApiController
     # end
   end
 
+  def search_by_category
+    tasks = current_user.tasks.where(permitted_search_params)
+    remove_values = %i[created_at updated_at user_id]
+    respond_with(tasks.as_json(except: remove_values))
+  end
+
   def searcher
     tasks = current_user.tasks.where(end: nil).first
     respond_with(tasks)
@@ -30,6 +36,12 @@ class TasksController < ApiController
   def permitted_update_params
     att_update = %i[end]
     params.require(:task).permit(att_update)
+  end
+
+  def permitted_search_params
+    search_date = Time.at(params[:start].to_i / 1000).strftime("%d/%m/%Y")
+    search_date = Date.strptime(search_date, '%d/%m/%Y').all_day
+    newParams = {:start => search_date, :category_id => params[:category_id] }
   end
 
   def permitted_create_params

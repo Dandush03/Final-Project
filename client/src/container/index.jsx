@@ -1,3 +1,4 @@
 import Footer from './Footer';
+import Progress from './Progress';
 
-export default Footer;
+export { Footer, Progress };

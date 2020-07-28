@@ -11,6 +11,9 @@ const initState = {
   location,
   task: { active: false, current: {}, taskPop: false },
   taskList: [{}],
+  taskByCategory: {
+    working: [], cleaning: [], sleeping: [], studying: [],
+  },
 };
 
 export default function configureStore() {

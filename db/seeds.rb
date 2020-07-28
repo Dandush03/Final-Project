@@ -9,7 +9,7 @@
 Category.create(
   [
     { categories: 'working' },
-    { categories: 'cleaning' },
+    { categories: 'studing' },
     { categories: 'eating' },
     { categories: 'sleeping' }
   ]
