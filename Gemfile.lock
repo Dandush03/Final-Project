@@ -98,6 +98,11 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     erubi (1.9.0)
     execjs (2.7.0)
+    factory_bot (6.1.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.1.0)
+      factory_bot (~> 6.1.0)
+      railties (>= 5.0.0)
     ffi (1.13.1-x64-mingw32)
     foreman (0.87.1)
     globalid (0.4.2)
@@ -278,6 +283,7 @@ DEPENDENCIES
   capybara
   cloudinary
   devise
+  factory_bot_rails
   foreman
   jbuilder
   jquery-rails

@@ -47,6 +47,8 @@ group :development, :test do
   gem('sqlite3')
   # Test Rails
   gem('rspec-rails')
+  # Create A Boot for Database
+  gem('factory_bot_rails')
 end
 
 group :development do

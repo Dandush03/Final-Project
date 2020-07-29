@@ -1,10 +1,8 @@
 class TasksController < ApiController
-  respond_to :json, :xml
-
   def index
     tasks = current_user.tasks.order('start DESC').all
     remove_values = %i[created_at updated_at user_id]
-    respond_with(tasks.as_json(except: remove_values))
+    render json: tasks.except(remove_values), status: :ok
   end
 
   def create
@@ -16,7 +14,7 @@ class TasksController < ApiController
   def update
     task = current_user.tasks.find(params[:id])
     # unless params[:start]
-    task.end = Time.at(permitted_update_params[:end] / 1000)
+    task.end = Time.at(permitted_update_params[:end].to_i / 1000)
     task.save
     # end
   end
@@ -24,12 +22,12 @@ class TasksController < ApiController
   def search_by_category
     tasks = current_user.tasks.where(search_params_scope)
     remove_values = %i[created_at updated_at user_id]
-    respond_with(tasks.as_json(except: remove_values))
+    render json: tasks.except(remove_values), status: :ok
   end
 
   def searcher
     tasks = current_user.tasks.where(end: nil).first
-    respond_with(tasks)
+    render json: tasks, status: :ok
   end
 
   private
@@ -45,8 +43,6 @@ class TasksController < ApiController
             when 30 then Date.today.all_month
             else Time.now.all_day
             end
-    puts range
-
     { start: range, category_id: params[:category_id] }
   end
 
