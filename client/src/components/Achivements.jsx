@@ -1,26 +1,38 @@
 import React from 'react';
-import { CircularProgressbar } from 'react-circular-progressbar';
 import PropTypes from 'prop-types';
 
-// Styles
-import 'react-circular-progressbar/dist/styles.css';
+// Javascript
+import { timeToString } from '../javascript/time';
 
-export default function Achivements({ percentage, name }) {
+// Styles
+import '../assets/styles/achivements.scss';
+
+export default function Achivement({
+  time, name, goal, img,
+}) {
+  const timer = timeToString(time);
   return (
-    <div className="progress-container">
-      <CircularProgressbar
-        value={percentage}
-        maxValue={1}
-        text={`${(percentage * 100).toFixed(2)}%`}
-        strokeWidth={10}
-        className="progress"
-      />
-      <span>{name}</span>
+    <div className="achivement">
+      <img src={img} alt={`${name} Profile`} />
+      <div className="progress-container">
+        <h3>{name}</h3>
+        <p>
+          Time Spent:
+          <span>{timer}</span>
+        </p>
+        <p>
+          Goal:
+          <span>{goal}</span>
+          Hours
+        </p>
+      </div>
     </div>
   );
 }
 
-Achivements.propTypes = {
-  percentage: PropTypes.number.isRequired,
+Achivement.propTypes = {
+  time: PropTypes.number.isRequired,
+  goal: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
+  img: PropTypes.string.isRequired,
 };

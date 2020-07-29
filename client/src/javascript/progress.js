@@ -1,4 +1,4 @@
-const sumDate = (data, max, extra = null) => {
+const sumDate = (data, max = null, extra = null) => {
   let h = 0;
   let m = 0;
   let s = 0;
@@ -16,6 +16,9 @@ const sumDate = (data, max, extra = null) => {
 
   const time = h + m + s + extra;
   const maxT = 3600 * max;
+  if (max === null) {
+    return time;
+  }
   return time / maxT;
 };
 

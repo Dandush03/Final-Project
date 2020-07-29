@@ -16,6 +16,9 @@ import '../assets/styles/progress.scss';
 
 // Images
 import workingImg from '../assets/images/working.svg';
+import sleepingImg from '../assets/images/sleeping.svg';
+import studingImg from '../assets/images/studing.svg';
+import eatingImg from '../assets/images/eating.svg';
 
 // Components
 import { ProgressBar, Achivements } from '../components/index';
@@ -97,7 +100,22 @@ class Progress extends Component {
         <div className="achivements">
           {
             working
-              ? <Achivements time={GroupData(working, (10 * range), wExtra)} name="Working" img={workingImg} />
+              ? <Achivements time={GroupData(working, null, wExtra)} name="Working" goal={(10 * range)} img={workingImg} />
+              : null
+          }
+          {
+            studing
+              ? <Achivements time={GroupData(studing, null, sExtra)} name="Studing" goal={(4 * range)} img={studingImg} />
+              : null
+          }
+          {
+            eating
+              ? <Achivements time={GroupData(eating, null, eExtra)} name="Eating" goal={(2 * range)} img={eatingImg} />
+              : null
+          }
+          {
+            sleeping
+              ? <Achivements time={GroupData(sleeping, null, slExtra)} name="Sleeping" goal={(8 * range)} img={sleepingImg} />
               : null
           }
         </div>
