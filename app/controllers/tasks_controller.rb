@@ -13,10 +13,8 @@ class TasksController < ApiController
 
   def update
     task = current_user.tasks.find(params[:id])
-    # unless params[:start]
     task.end = Time.at(permitted_update_params[:end].to_i / 1000)
     task.save
-    # end
   end
 
   def search_by_category
