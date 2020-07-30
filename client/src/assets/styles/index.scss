@@ -1,0 +1,57 @@
+@import './global';
+
+$bg: #f5f5f5;
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --app-height: 100%;
+}
+
+body {
+  -webkit-font-smoothing: antialiased; // sass-lint:disable-line no-vendor-prefixes
+  font-family: $font;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  width: 100vw;
+}
+
+header {
+  background-color: $blue;
+  height: 50px;
+  width: 100vw;
+}
+
+main {
+  background-color: $bg;
+  height: calc(100vh - 70px - 50px);
+  overflow: auto;
+  width: 100vw;
+
+  @media not all and (hover: hover) {
+    height: var(--app-height);
+  }
+}
+
+footer {
+  background-color: $gray;
+  height: 70px;
+  width: 100vw;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue Light';
+  font-style: normal;
+  font-weight: light;
+  src: url('./fonts/HelveticaNeue-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Chathura Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: url('./fonts/Chathura-Regular.ttf') format('truetype');
+}
